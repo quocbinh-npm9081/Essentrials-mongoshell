@@ -1,0 +1,54 @@
+//Get first_name and email with ip_address ends ".11"
+db.user.find({email : {$regex : /\.11$/ }}, {_id : 0, _first_name: 1}) //không lấy _id, chỉ lấy first_name 
+SELECT first_name, email FROM user 
+WHERE ip_address LIKE '%. 11'
+
+
+
+//Find all male user
+db.user.find({gender : "Male"})
+SELECT * FROM user
+WHERE gender="Male"
+
+//Find all user with age > 35
+db.user.find(age : { $gt : 35})
+SELECT * FROM user
+WHERE age > 35
+
+//Find all users with age >= 40
+db.user.find({age : {$gte : 40}})
+SELECT * FROM user
+WHERE age >= 40
+
+//Find all user with age = 33 or 47
+c1:
+db.user.find({$or : [{$eq : {age : 33}},{$eq : {age : 47}}]})
+SELECT * FROM user 
+WHERE age = 33 OR age = 77
+
+c2:
+db.user.find({age : {$in : [33, 47]}})
+SELECT * FROM user
+WHERE age IN (33,47)
+
+//Find all with email address ends with .edu
+db.user.find({email : {$regex : /\.edu$/i }})     (i dùng để không phân biệt chữ hoa chữ thường, $ là kí hiệu hết thúc 1 chuỗi)
+SELECT * FROM user (sử dụng LIKE và Wildcards)
+WHERE email LIKE "%.edu" 
+
+//Find all with ip_address start with 214
+db.user.find({ip_address : {$regex : /^214/}})
+SELECT * FROM user
+WHERE ip_address LIKE '214%' (sử dụng LIKE và Wildcards)
+
+
+
+//Find all with ip_address including charactor 25
+db.user.find({ip_address : {$regex : /25/}})
+SELECT * FROM user
+WHERE ip_address LIKE = "%25%"(sử dụng LIKE và Wildcards)
+
+//Find all with ip_address including charactor .25
+db.user.find({ip_address : {$regex : /\.25/}})
+SELECT * FROM user
+WHERE ip_address LIKE = "%.25%"(sử dụng LIKE và Wildcards)
