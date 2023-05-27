@@ -52,3 +52,12 @@ WHERE ip_address LIKE = "%25%"(sử dụng LIKE và Wildcards)
 db.user.find({ip_address : {$regex : /\.25/}})
 SELECT * FROM user
 WHERE ip_address LIKE = "%.25%"(sử dụng LIKE và Wildcards)
+
+// AND , OR OPERATOR
+//Find first_name of users with gender is "Male" and geater than or equal to 35 old
+db.user.find({
+    gender : "Male",
+    age : { $gte : 35 }
+}, { _id: 0, first_name : 1})
+SELECT first_name FROM user
+WHERE gender = "Male" AND age >= 35 
