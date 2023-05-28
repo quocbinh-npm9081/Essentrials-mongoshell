@@ -86,3 +86,7 @@ WHERE last_login EXISTS ( table 2)
 //Tooán tử $where trong mongodb( dùng để hổ trợ viết Javascript)
 //Tìm kiếm user có first_name === Crystal hãy sử dụng javascript
 db.user.find({$where : "this.first_name === 'Crystal' " })
+
+//INFINITE SCROLL VÀ PAGINATION
+// phân trang , lấy 6 người dùng và bỏ qua 6 người dùng đầu tiên
+db.user.find({}).skip(6).limit(6)
