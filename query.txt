@@ -81,3 +81,8 @@ db.user.find({last_login : {$exists : false}})
 
 SELECT last_login FROM user
 WHERE last_login EXISTS ( table 2)
+
+
+//Tooán tử $where trong mongodb( dùng để hổ trợ viết Javascript)
+//Tìm kiếm user có first_name === Crystal hãy sử dụng javascript
+db.user.find({$where : "this.first_name === 'Crystal' " })
