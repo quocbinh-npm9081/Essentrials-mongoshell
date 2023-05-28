@@ -71,3 +71,6 @@ WHERE gender = "Female" OR age < 24
 
 //Tìm kiếm người dùng đã làm dc 4 dự án 
 db.user.find({projects : {$size : 4 }})
+
+// Tìm kiếm người dùng có dự án là name: 'Rank', version: '0.98'
+db.user.find({projects : { $elemMatch : { name : 'Rank', version : 0.98'}}})
